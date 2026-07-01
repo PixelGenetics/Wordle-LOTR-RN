@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "wordle-lotr",
+    "name": "Wordle LOTR",
     "slug": "wordle-lotr",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon-lotr.png",
+    "icon": "./assets/images/ICON.png",
     "scheme": "wordlelotr",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -14,10 +14,10 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/images/android-icon-foreground.png",
-        "backgroundImage": "./assets/images/android-icon-background.png",
-        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+        "backgroundColor": "#1a202c",
+        "foregroundImage": "./assets/images/ICON.png",
+        "backgroundImage": "./assets/images/ICON.png",
+        "monochromeImage": "./assets/images/ICON.png"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
