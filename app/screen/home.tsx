@@ -15,6 +15,8 @@ const Home = () => {
     const [mensaje, setMensaje] = useState('');
     const [colors, setColors] = useState<string[]>([]);
     const [refresh, setRefresh] = useState(0);
+    const [counter, setCounter] = useState(0)
+    const [showAnswer, setShowAnswer] = useState(false);
 
     const tamanio = random?.nombre.length || 0;
 
@@ -24,6 +26,7 @@ const Home = () => {
         setChar(''); // Limpiar al refrescar
         setColors([]);
         setMensaje('');
+        setCounter(0);
     }, [refresh]);
 
     const validarIntento = () => {
@@ -50,7 +53,8 @@ const Home = () => {
                 }
             }
         });
-        
+        console.log('counter',counter);
+        setCounter(counter+1);
         setColors(newColors);
         setMensaje(char.toUpperCase() === random.nombre.toUpperCase() ? 'correcto' : 'incorrecto');
     };
@@ -96,6 +100,17 @@ const Home = () => {
 
             <Text style={styles.hint}>Pista 1: {random?.explicacion}</Text>
             <Text style={styles.hint}>Pista 2: {random?.explicacion2}</Text>
+
+            {counter >= 3 && !showAnswer &&(
+            <Pressable style={styles.answerButton} onPress={() => setShowAnswer(true)}>
+                <Text style={styles.answerButtonText}>Presiona aqui para ver la respuesta</Text>
+            </Pressable>
+            )}
+
+            {showAnswer && (
+                <Text style={styles.answerText}> {random?.nombre} </Text>
+            )}
+
             <Pressable style={styles.refreshButton} onPress={() => setRefresh(prev => prev + 1)}>
                 <Text style={{color: 'white'}}>Nueva Palabra</Text>
             </Pressable>

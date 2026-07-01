@@ -60,6 +60,32 @@ export const styles = StyleSheet.create({
         marginEnd:50,
         marginStart:50
     },
+    answerButton: {
+        width: '80%',
+        backgroundColor: '#38a169',
+        paddingVertical: 14,
+        paddingHorizontal: 20,
+        borderRadius: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 10,
+        borderWidth: 1,
+        borderColor: '#68d391',
+    },
+
+    answerButtonText: {
+        color: '#ffffff',
+        fontSize: 16,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    answerText: {
+        color: '#ffffff',
+        fontSize: 22,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginTop: 10,
+    },
     refreshButton: { 
         marginTop: 'auto', // Opcional: Empuja el botón al fondo si quieres
         marginBottom: 90,
