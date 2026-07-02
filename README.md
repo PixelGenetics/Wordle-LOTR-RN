@@ -4,4 +4,4 @@ Para poder instalar el proyecto en tu dispositivo Android primeramente debes des
 
 Cuando abras el instalador veras esta ventana:
 
-[![Configuration] (/home/pixel/Documents/Android/wordle-lotr/assets/images/1.jpg)](https://github.com/PixelGenetics/Wordle-LOTR-RN/blob/main/assets/images/1.jpg?raw=true)
+![image alt](https://github.com/PixelGenetics/Wordle-LOTR-RN/blob/main/assets/images/1.jpg?raw=true)
