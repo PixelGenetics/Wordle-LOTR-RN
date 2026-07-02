@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Pressable, Text, TextInput, View } from "react-native";
+import { Dimensions, Pressable, Text, TextInput, View } from "react-native";
+import ConfettiCannon from 'react-native-confetti-cannon';
 import { dictionary, wordItem } from "../../Dictionary/dictionary";
 import { styles } from "../../styles/homeStyle";
 
@@ -17,6 +18,8 @@ const Home = () => {
     const [refresh, setRefresh] = useState(0);
     const [counter, setCounter] = useState(0)
     const [showAnswer, setShowAnswer] = useState(false);
+    const [showConfetti, setShowConfetti] = useState(false);
+    const {width} = Dimensions.get("window")
 
     const tamanio = random?.nombre.length || 0;
 
@@ -27,6 +30,7 @@ const Home = () => {
         setColors([]);
         setMensaje('');
         setCounter(0);
+        setShowConfetti(false);
     }, [refresh]);
 
     const validarIntento = () => {
@@ -36,6 +40,7 @@ const Home = () => {
         const tryWord = char.toUpperCase().split('');
         const newColors = new Array(tamanio).fill(COLOR_ABSENT);
         const secretRemaining: (string | null)[] = [...secret];
+        const isCorrect = char.toUpperCase() === random.nombre.toUpperCase();
 
         tryWord.forEach((character, i) => {
             if(character === secret[i]){
@@ -53,11 +58,16 @@ const Home = () => {
                 }
             }
         });
-        console.log('counter',counter);
+        console.log('counter',char);
         setCounter(counter+1);
         setColors(newColors);
-        setMensaje(char.toUpperCase() === random.nombre.toUpperCase() ? 'correcto' : 'incorrecto');
+        setMensaje( isCorrect ? 'correcto' : 'incorrecto');
+            if(isCorrect){
+            setShowConfetti(true);
+        }
+
     };
+
 
     return (
         <View style={styles.container}>
@@ -93,13 +103,21 @@ const Home = () => {
             <View style={styles.messageContainer}>
                 {mensaje !== '' && (
                     <Text style={[styles.messageText, { color: mensaje === 'correcto' ? COLOR_CORRECT : '#f56565' }]}>
-                        {mensaje === 'correcto' ? '¡Excelente!' : 'Intenta de nuevo'}
+                        {mensaje === 'correcto' 
+                        ? '¡Excelente!' : 'Intenta de nuevo'}
                     </Text>
                 )}
+
             </View>
 
             <Text style={styles.hint}>Pista 1: {random?.explicacion}</Text>
             <Text style={styles.hint}>Pista 2: {random?.explicacion2}</Text>
+
+            <Pressable style={styles.acceptButton} onPress={validarIntento}>
+                <Text style={styles.acceptButtonText}>
+                    Aceptar
+                </Text>
+            </Pressable>
 
             {counter >= 3 && !showAnswer &&(
             <Pressable style={styles.answerButton} onPress={() => setShowAnswer(true)}>
@@ -114,6 +132,15 @@ const Home = () => {
             <Pressable style={styles.refreshButton} onPress={() => setRefresh(prev => prev + 1)}>
                 <Text style={{color: 'white'}}>Nueva Palabra</Text>
             </Pressable>
+                {showConfetti && (
+                <ConfettiCannon
+                count={120}
+                origin={{ x: width / 2, y: 80 }}
+                fadeOut={true}
+                autoStart={true}
+                onAnimationEnd={() => setShowConfetti(false)}
+                />
+                )}
         </View>
     );
 };

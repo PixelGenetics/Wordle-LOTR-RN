@@ -72,7 +72,24 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#68d391',
     },
-
+    acceptButton: {
+        width: '80%',
+        height: 55,
+        backgroundColor: '#132f4e',
+        borderWidth: 1,
+        borderColor: '#4180ae',
+        borderRadius: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 10,
+        marginBottom: 10,
+},
+    acceptButtonText: {
+        color: '#ffffff',
+        fontSize: 16,
+        fontWeight: 'bold',
+        textAlign: 'center',
+},
     answerButtonText: {
         color: '#ffffff',
         fontSize: 16,
